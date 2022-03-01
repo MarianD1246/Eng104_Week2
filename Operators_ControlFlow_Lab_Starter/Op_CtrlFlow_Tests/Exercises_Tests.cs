@@ -28,6 +28,11 @@ namespace Op_CtrlFlow_Tests
         {
             Assert.That(Exercises.MyMethod(a,b), Is.EqualTo(expected));
         }
+        [TestCase(2, 0)] //div by 0 error
+        public void DivBy0Exception_MyMethod_ReturnsCorrectAverage(int a, int b)
+        {
+            Assert.That(()=> Exercises.MyMethod(a,b), Throws.TypeOf<System.DivideByZeroException>());
+        }
 
         [Test]
         public void Average_ReturnsCorrectAverage()
@@ -61,8 +66,12 @@ namespace Op_CtrlFlow_Tests
 
 
         [Category("Out of bounds")]
-        [TestCase(101, "Parameter out of bounds")]
-        [TestCase(-1, "Parameter out of bounds")]
+        [TestCase(101)]
+        [TestCase(-1)]
+        public void DivBy0Exception_GradeTest(int grade)
+        {
+            Assert.That(() => Exercises.Grade(grade), Throws.TypeOf<System.ArgumentOutOfRangeException>());
+        }
 
         [Category("Edge Case")]
         [TestCase(100, "Pass with Distinction")]

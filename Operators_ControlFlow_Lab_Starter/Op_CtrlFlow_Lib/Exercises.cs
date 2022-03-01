@@ -58,8 +58,8 @@ namespace Op_CtrlFlow
         public static string Grade(int mark)
         {
             if (0 > mark || mark > 100)
-                return "Parameter out of bounds";
-                //throw new ArgumentException("Parameter out of bounds");
+                //return "Parameter out of bounds";
+                throw new ArgumentOutOfRangeException();
 
             else if (75 <= mark)
                 return "Pass with Distinction";
@@ -105,6 +105,7 @@ namespace Op_CtrlFlow
                 //1 => 100,
                 //0 => 200,
                 //_ => 0,
+                //exresion body lambdas
             }
         }
     }
