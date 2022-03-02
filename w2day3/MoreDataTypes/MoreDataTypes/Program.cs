@@ -1,7 +1,30 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Text;
 
 namespace More_DataTypes;
+
+//enums - enumerable types - safe type (type safety)
+//disatvantagues when u don't know all the states/items
+public enum suits
+{
+    HEARTS, CLUBS, DIAMONDS, SPADES
+} //int value for index, can set hearts=3 to change index - this makes club -4 diamond - 5 spades -6
+
+public enum Size
+{
+    SMALLV= 10, MEDIUM = 25, LARGE = 50
+}
+
+public class Trainee
+{
+    private readonly string _name; //read only value can't be chaned once declared
+
+    public Trainee(string name) //constructor
+    {
+        _name = name;
+    }
+}
 
 public class Program
 {
@@ -59,7 +82,167 @@ public class Program
 
         ///parse convert string to ints/enums/dates/character etc..
 
-        ParshingString();
+        //ParshingString();
+
+        ///array 
+        //MultiDArray();
+        //2D Arrays work like grids / or chess boards
+        //2d array is [x,y] meaning the total space is x * y
+        //char[,] gridTwo =
+        //{
+        //    {'a', 'b'}, //row 1 column 1 a , colum 2 b
+        //    {'c', 'd'}, //row 2 column 1 c, column 2 d
+        //    {'e', 'f'}, //row 3 column 1 e, column 2 f
+        //    {'g', 'h'}  //row 4 column 1 g, column 2 h
+        //};
+
+        // jagged array of arrayies int[][][]
+
+        //foreach (char c in gridTwo) //foreach flatens the 2d array into a 1d array and prints from a to h
+        //{
+        //    Console.WriteLine(c);
+        //}
+        //nested for loop to cycle throw each row 
+
+        //string[] trainingGroup = { "Laura", "Steven", "James", "Jab", "Ned" };
+        //string[][] spartaAcademy = new string[][]
+        //{
+        //    new string[]{ "Marian" , "Goncalo" , "seb" , "Stanni", "David", "Gaurav" },
+        //    trainingGroup
+        //};
+        //foreach (string[] arr in spartaAcademy)
+        //{
+        //    Console.WriteLine();
+        //    foreach (string s in arr)
+        //    {
+        //        Console.WriteLine(s);
+        //    }
+        //}
+
+        //time is complicated to store and use - level of accuaricy
+        //timezone calendrads, diffrent system have diffrent time systems/mesurements
+        //uk - grigorian calendar // julian calendar was it's predecesor
+        //Unix time stamp? 68 years from 1968~1967 to 2036 jan 19th // same as milenial problem
+        //DataTimeMethods();
+
+        //var bDay = new DateTime(1998, 08, 25);
+        //diffrent way to output a date in year/m/d
+        //Console.WriteLine(bDay);
+        //Console.WriteLine(bDay.ToString("y-M-d"));
+        //Console.WriteLine(bDay.ToString("yy/MM/dd"));
+        //Console.WriteLine(bDay.ToString("ddd.MMM.yyy"));
+        //Console.WriteLine(bDay.ToString("MMMM.yyyy ddd"));
+
+        //TimeSpan is a time interval data type
+        //TimeSpan myAge = DateTime.Now - bDay;
+        //Console.WriteLine(myAge);
+        //var myAgeInYears = myAge.Days / 365.25;
+        //Console.WriteLine($"{myAgeInYears:N1} years old to one deciam point");
+        //Console.WriteLine($"{myAgeInYears:N0} years old ");
+
+        //DateOnly - just a date e.g just days or month or year
+        //var myDate = new DateOnly(1998, 08, 25);
+        //Console.WriteLine(myDate);
+        //var today = DateTime.Now;
+        //DateOnly now = DateOnly.FromDateTime(today);
+        //Console.WriteLine(now);
+        //Console.WriteLine(today);
+
+
+        //stop watch //needs System.Diagnostics
+        //var stopwatch = new Stopwatch();
+        //stopwatch.Start();
+        //long total = 0;
+        //for (int i = 0; i < 100000; i++)
+        //{
+        //    total += i;
+        //}
+        //stopwatch.Stop();
+        //Console.WriteLine(stopwatch.Elapsed);
+        //Console.WriteLine(stopwatch.ElapsedMilliseconds);
+        //Console.WriteLine(stopwatch.ElapsedTicks);
+
+        //Enumz();
+        //var medValue = (int)Size.MEDIUM;
+        //var mySize = (Size)50;
+        //var aSuit = Enum.Parse(typeof(suits), "CLUB"); throws excepton cuz CLUBS is defined not club we made a mistake
+        var aSuit = Enum.Parse(typeof(suits), "CLUBS");
+
+        char[] bob = { 'a', 'b', 'c' };
+    }
+
+    public static void Enumz()
+    {
+        suits theSuit = suits.HEARTS;
+        //if (theSuit == suits.HEARTS)
+        //{
+        //    Console.WriteLine($"Suit is {suits.HEARTS}");
+        //}
+        //else Console.WriteLine($"Suit is {theSuit} not {suits.HEARTS}");
+        switch (theSuit)
+        {
+            case suits.HEARTS:
+                Console.WriteLine("Thank you");
+                break;
+            default:
+                Console.WriteLine("No Thanks");
+                break;
+
+
+        }
+    }
+
+
+
+    public static void DataTimeMethods()
+    {
+        var now = DateTime.Now;
+        Console.WriteLine($"The time now is {now}");
+        //Console.WriteLine($"The time now is {now.Ticks}");
+        //Console.WriteLine(DateTime.MinValue); //01/01/0001 00:00:00
+        //Console.WriteLine(DateTime.MaxValue); //31/12/9999 23:59:59
+        var tomorrow = now.AddDays(1);
+        var deliverTime = now.AddDays(5); // after item bought deliver it in 5 days
+        Console.WriteLine(tomorrow);
+    }
+
+
+    public static void JaggedArray()
+    {
+        int[][] intJArray = new int[2][];
+        intJArray[0] = new int[4]; // array 1 is 4 item wide
+        intJArray[1] = new int[2]; // array 2 is 2 item wide
+        intJArray[0][2] = 3;
+        intJArray[1][0] = 5;
+        // |     |     |  3  |     | [0] [x] = 
+        // |  5  |     |             [1] [x] = 
+    }
+
+
+    public static void MultiDArray()
+    {
+        int[,] grid = new int[2, 4]; //1 commer , means 2d separes the ds 2 commers means 3d so int[,,]
+        grid[0, 1] = 6;
+        grid[1, 0] = 8;
+        grid[1, 3] = 10;
+    }
+
+    public static void OneDArray()
+    {
+        int[] newIntArray = { 12, 34, 12, 45, 56 };
+
+        //newIntArray.OrderBy(x => x); //asceding
+        //newIntArray.OrderByDescending(x => x); //desceding
+        //Array.Reverse(newIntArray); //reverses the order
+        //Array.ForEach (newIntArray, x => Console.WriteLine(x)); // pints all items
+        //var traineeArray = new string[] { "David", "Marian", "Stanni" };
+        //var traineeArray2 = new string[3];
+        //traineeArray[0] = "Jab";
+        //traineeArray[1] = "James";
+        //traineeArray[2] = "Laura";
+        //lines above replacing item 0 - david with jab, item 1 marian - james and item 2 - stanni with laura
+        //traineeArray[3] = "bob" won't round //out of bounds exception
+
     }
 
     public static void ParshingString()
