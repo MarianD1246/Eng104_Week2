@@ -8,14 +8,17 @@ namespace DataTypes_Lib
         {
             checked
             {
-                return (short)num;
+                return Convert.ToInt16((short)num);
+                //return (short)num;
             }
         }
 
         public static long FloatToLong(float num)
         {
             double x = Math.Round(num, MidpointRounding.AwayFromZero);
-            return (long)x;
+            //return (long)x;
+            //use convert?
+            return Convert.ToInt64(x);
         }
     }
 }

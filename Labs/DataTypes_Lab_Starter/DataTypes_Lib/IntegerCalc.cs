@@ -35,6 +35,7 @@ namespace DataTypes_Lib
             }
             catch (DivideByZeroException)
             {
+                //Handle the exception e.g throws a diffrent exception or fixed div by zero exception
                 throw new ArgumentException("Can't divide by zero");
             }
         }
