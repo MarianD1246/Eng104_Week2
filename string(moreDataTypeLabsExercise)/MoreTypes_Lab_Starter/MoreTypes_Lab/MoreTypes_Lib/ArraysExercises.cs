@@ -38,7 +38,7 @@ namespace MoreTypes_Lib
 
             int count = 0;
             string[,,] strArray = new string[length1, length2, length3];
-            //[x,y,z]
+            //[x,y,z] //1d word //2d words on a page //3d many pages in a book //4d many books in a shelf //5many shelfs on a 
             for (int x = 0; x < length1; x++)
             {
                 for (int y = 0; y < length2; y++)
